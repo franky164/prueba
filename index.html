@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página Tenebrosa</title>
+    <style>
+        /* CSS: El estilo visual */
+        body {
+            background-color: #050505; /* Un negro casi absoluto */
+            color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            overflow: hidden;
+            font-family: 'Courier New', Courier, monospace;
+        }
+
+        #boton-inicio {
+            padding: 15px 30px;
+            font-size: 1.2rem;
+            background-color: transparent;
+            color: #ff0000; /* Rojo sangre */
+            border: 2px solid #ff0000;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 5px;
+        }
+
+        #boton-inicio:hover {
+            background-color: #ff0000;
+            color: black;
+            box-shadow: 0 0 20px #ff0000;
+        }
+
+        #contenedor-sorpresa {
+            display: none; /* Oculto hasta que se haga clic */
+            text-align: center;
+        }
+
+        .imagen-giratoria {
+            width: 300px;
+            height: auto;
+            border-radius: 50%;
+            margin-top: 20px;
+            /* Definimos la animación de rotación */
+            animation: rotar 2s linear infinite;
+        }
+
+        @keyframes rotar {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .oculto {
+            display: none !important;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- El Botón Inicial -->
+    <button id="boton-inicio">¿sorpresa?</button>
+
+    <!-- Lo que aparece después -->
+    <div id="contenedor-sorpresa">
+        <h2 style="color: #2e2626;">antigordas...</h2>
+        <!-- Cambia 'imagen.jpg' por el nombre de tu archivo -->
+        <img src="https://en.gtalogo.com/img/36972.webp" alt="Imagen Sorpresa" class="imagen-giratoria">
+    </div>
+
+    <!-- Audio (Cambia 'musica.mp3' por tu archivo) -->
+    <audio id="musica-fondo" loop>
+        <source src="c:\Users\ramir\Downloads\oye gelda- saturado - BlockSpinFan.mp3" type="audio/mpeg">
+    </audio>
+
+    <script>
+        // JavaScript: La lógica
+        const boton = document.getElementById('boton-inicio');
+        const sorpresa = document.getElementById('contenedor-sorpresa');
+        const musica = document.getElementById('musica-fondo');
+
+        boton.addEventListener('click', () => {
+            // Ocultamos el botón
+            boton.classList.add('oculto');
+            
+            // Mostramos la imagen y el texto
+            sorpresa.style.display = 'block';
+            
+            // Reproducimos la música
+            musica.play().catch(error => {
+                console.log("El navegador bloqueó el audio. Asegúrate de interactuar primero.");
+            });
+        });
+    </script>
+
+</body>
+</html>
